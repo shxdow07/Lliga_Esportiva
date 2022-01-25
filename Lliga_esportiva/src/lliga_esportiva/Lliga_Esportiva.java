@@ -309,6 +309,7 @@ public class Lliga_Esportiva {
          System.out.println("--------     ---------------------     --------------------    --------------------            -------------------       ----------------    ");
         for (int i=0;i<Equips.length;i++){
             if(Equips[i]!=null){
+	    Puntuacions[i]=(Prg[i]*3+Pre[i]*1);
             System.out.println(Equips[i]+"\t\t\t"+Prj[i]+"\t\t\t"+Prg[i]+"\t\t\t"+Pre[i]+"\t\t\t"+Prp[i]+"\t\t\t"+Puntuacions[i]);
             j=i;
             pw.println(Equips[i]+":"+Prj[i]+":"+Prg[i]+":"+Pre[i]+":"+Prp[i]+":"+Puntuacions[i]);
