@@ -255,69 +255,7 @@ public class Lliga_Esportiva {
         }while(!enrere);
         } } 
      }
-     static void editarEquip2() throws IOException{
-        int a=0;
-        Scanner lector;
-        boolean enrere=false;
-        File fitxer = new File(carpeta);
-        FileWriter fw = new FileWriter (fitxer, true);
-        
-        Scanner teclat = new Scanner (System.in);
-        Scanner st = new Scanner(System.in);
-       
-        do{
-            System.out.println("Que vols modificar?");
-            System.out.println("1. Nom");
-            System.out.println("2. Partits jugats");
-            System.out.println("3. Partits Guanyats");
-            System.out.println("4. Partits Empatats");
-            System.out.println("5. Partits Perduts");
-            System.out.println("6. Punts Totals");
-            System.out.println("s. Sortir");
-            String sa = st.next();
-            char opcio2 = sa.charAt(0);
-            System.out.println("la opcio: " + opcio2);
-             switch (opcio2) {
-                case '1':
-                    System.out.println("Canviar el Nom"); 
-                    Nom = teclat.nextLine();
-                    break;
-                    
-                case '2':
-                    System.out.println("Canviar els Partits Jugats");
-                    pj = teclat.nextInt();
-                    fw.write(pj);
-                    break;
-                case '3':
-                    System.out.println("Canviar els Partits Guanyats");
-                    pg = teclat.nextInt();
-                    fw.write(pg);
-                    break;
-                case '4':
-                    System.out.println("Canviar els Partits Empatats");
-                    pe = teclat.nextInt();
-                    fw.write(pe);
-                    break;
-                case '5':
-                    System.out.println("Canviar els Partits Perduts");
-                    pp = teclat.nextInt();
-                    fw.write(pp);
-                    break;
-                case '6':
-                    System.out.println("Canviar els Punts totals");
-                    pt = teclat.nextInt();
-                    fw.write(pt);
-                    break;
-                case 's':
-                    enrere = true;
-                    break;
-                case 'S':
-                    enrere = true;
-                    break;
-            }
-        }while(!enrere);
-        fw.close();
-    }
+     
      static void consultarComandes() throws IOException{
         Scanner teclat = new Scanner (System.in);
         Scanner lector;
