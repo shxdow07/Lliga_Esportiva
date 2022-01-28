@@ -127,7 +127,6 @@ public class Lliga_Esportiva {
     }
      static void visualitzarequips() throws FileNotFoundException{
         File fitxer = new File(carpeta);
-        Scanner lector;
         FileReader reader = new FileReader (fitxer);
         BufferedReader buffer = new BufferedReader (reader);
         System.out.println("-------------PUNTUACIONS------------");
@@ -147,8 +146,6 @@ public class Lliga_Esportiva {
         File fitxer = new File(carpeta);
         FileWriter fw = new FileWriter (fitxer, true);
         Scanner teclat = new Scanner (System.in);
-        //BufferedWriter bw = new BufferedWriter(fw);
-        //PrintWriter pw = new PrintWriter(fw);
             for (int i=contadorEquips;i<Equips.length;i++){
                 if(Equips[i]==null){
                 System.out.println(Equips[i]);
@@ -179,13 +176,11 @@ public class Lliga_Esportiva {
      }
 
      static void editarEquip() throws FileNotFoundException, IOException{
-         int a=0;
         int y=0;
         File fitxer = new File(carpeta);
         FileReader reader = new FileReader (fitxer);
         BufferedReader buffer = new BufferedReader (reader);
         Scanner teclat = new Scanner (System.in);
-        Scanner lector;
         
         System.out.println("Quin equip vols modificar");
         Nom = teclat.nextLine();  
@@ -265,11 +260,6 @@ public class Lliga_Esportiva {
      }
      
      static void consultarComandes() throws IOException{
-        Scanner teclat = new Scanner (System.in);
-        Scanner lector;
-        Scanner st = new Scanner(System.in);
-        boolean enrere = false;
-        int j=0;
         int a=0;
         int y=0;
         int min=Puntuacions[0];
@@ -302,8 +292,6 @@ public class Lliga_Esportiva {
         BufferedWriter bw = new BufferedWriter(fw);
         PrintWriter pw = new PrintWriter(bw);
         Scanner teclat = new Scanner (System.in);
-        //BufferedWriter bw = new BufferedWriter(fw);
-        //PrintWriter pw = new PrintWriter(fw);
          System.out.println("S'han desat les DADES;");
          System.out.println("                                                -------------EQUIPS------------");
          System.out.println("Equip            Partits Jugats          Partits Guanyats        Partits Empatats                Partits Perduts           Punts Totals    ");
@@ -316,8 +304,7 @@ public class Lliga_Esportiva {
             pw.println(Equips[i]+":"+Puntuacions[i]+":"+Puntuacions[i+1]+":"+Puntuacions[i+2]+":"+Puntuacions[i+3]+":"+Puntuacions[i+4]);
            }
 
-        } pw.print(Nom + ":" + pj+ ":" + pg+ ":" + pe+ ":" + pp+ ":"+pt + "\n");
-        pw.close();
+        }pw.close();
         exit=true;
      }
 
