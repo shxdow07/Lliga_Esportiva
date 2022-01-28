@@ -304,7 +304,7 @@ public class Lliga_Esportiva {
         Scanner teclat = new Scanner (System.in);
         //BufferedWriter bw = new BufferedWriter(fw);
         //PrintWriter pw = new PrintWriter(fw);
-         System.out.println("S'ha desat les DADES;");
+         System.out.println("S'han desat les DADES;");
          System.out.println("                                                -------------EQUIPS------------");
          System.out.println("Equip            Partits Jugats          Partits Guanyats        Partits Empatats                Partits Perduts           Punts Totals    ");
          System.out.println("--------     ---------------------     --------------------    --------------------            -------------------       ----------------    ");
@@ -317,9 +317,9 @@ public class Lliga_Esportiva {
            }
 
         } pw.print(Nom + ":" + pj+ ":" + pg+ ":" + pe+ ":" + pp+ ":"+pt + "\n");
-        pw.close(); 
+        pw.close();
+        exit=true;
      }
 
 }
-
 
