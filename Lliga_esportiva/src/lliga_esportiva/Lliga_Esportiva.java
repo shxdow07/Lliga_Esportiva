@@ -33,7 +33,7 @@ public class Lliga_Esportiva {
     static int pe;
     static int pp;
     static int pt;
-    public static String [] Equips= new String[100];
+    public static String [] Equips= new String[1000];
     public static int [] Puntuacions= new int[100];
     public static void main(String [] args) throws IOException{
             
@@ -148,7 +148,6 @@ public class Lliga_Esportiva {
         Scanner teclat = new Scanner (System.in);
             for (int i=contadorEquips;i<Equips.length;i++){
                 if(Equips[i]==null){
-                System.out.println(Equips[i]);
                 y=i;
                 System.out.println("Posar el nom de l'equip");
                 Nom=teclat.nextLine();
