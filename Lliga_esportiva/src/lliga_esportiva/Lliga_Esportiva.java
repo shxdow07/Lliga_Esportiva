@@ -34,7 +34,7 @@ public class Lliga_Esportiva {
     static int pp;
     static int pt;
     public static String [] Equips= new String[1000];
-    public static int [] Puntuacions= new int[100];
+    public static int [][] Puntuacions= new int[100][100];
     public static void main(String [] args) throws IOException{
             
         Scanner teclat = new Scanner (System.in);
@@ -87,8 +87,6 @@ public class Lliga_Esportiva {
     
     
     static void inici() throws FileNotFoundException, IOException{
-        int numero=0;
-        int resultat=0;
         File fitxer = new File(carpeta);
         Scanner lector;
         FileReader reader = new FileReader (fitxer);
@@ -102,21 +100,18 @@ public class Lliga_Esportiva {
                 String linea = lector.nextLine();
                 Scanner sl = new Scanner(linea);
                 sl.useDelimiter(":");
-                System.out.print(Equips[contadorEquips]=sl.next());
+                System.out.print(Equips[contadorEquips++]=sl.next());
                 System.out.print("\t\t\t");
-                System.out.print(Puntuacions[contadorEquips++]=sl.nextInt());
+                System.out.print(Puntuacions[contadorPuntuacions][1]=sl.nextInt());
                 System.out.print("\t\t\t");
-                System.out.print(Puntuacions[contadorEquips++]=sl.nextInt());
+                System.out.print(Puntuacions[contadorPuntuacions][2]=sl.nextInt());
                 System.out.print("\t\t\t");
-                System.out.print(Puntuacions[contadorEquips++]=sl.nextInt());
+                System.out.print(Puntuacions[contadorPuntuacions][3]=sl.nextInt());
                 System.out.print("\t\t\t\t");
-                System.out.print(Puntuacions[contadorEquips++]=sl.nextInt());
+                System.out.print(Puntuacions[contadorPuntuacions][4]=sl.nextInt());
                 System.out.print("\t\t\t");
-                System.out.println(numero=sl.nextInt());
-                resultat=resultat+numero;
-                Puntuacions[contadorEquips++]=numero;
-                contadorPuntuacions=resultat;    
-                contadorEquips++;
+                System.out.println(Puntuacions[contadorPuntuacions][5]=sl.nextInt());
+                contadorPuntuacions++;
                 
         }
   
@@ -134,7 +129,7 @@ public class Lliga_Esportiva {
         System.out.println("--------     ---------------------     --------------------    --------------------            -------------------       ----------------    ");
         for (int i=0;i<Equips.length;i++){
             if(Equips[i]!=null){
-             System.out.println("" + Equips[i] + "\t\t\t" + Puntuacions[i]+ "\t\t\t" + Puntuacions[i+1]+ "\t\t\t" + Puntuacions[i+2]+ "\t\t\t" + Puntuacions[i+3]+ "\t\t\t" + Puntuacions[i+4]);
+             System.out.println("" + Equips[i] + "\t\t\t" + Puntuacions[i][1]+ "\t\t\t" + Puntuacions[i][2]+ "\t\t\t" + Puntuacions[i][3]+ "\t\t\t" + Puntuacions[i][4]+ "\t\t\t" + Puntuacions[i][5]);
            }
         //Diem quants productes té cada proveidor
         
@@ -148,26 +143,26 @@ public class Lliga_Esportiva {
         Scanner teclat = new Scanner (System.in);
             for (int i=contadorEquips;i<Equips.length;i++){
                 if(Equips[i]==null){
+                System.out.println(Equips[i]);
                 y=i;
                 System.out.println("Posar el nom de l'equip");
                 Nom=teclat.nextLine();
                 Equips[y]=Nom;
                 System.out.println("Posar els partits jugats");
                 pj=teclat.nextInt();
-                Puntuacions[y]=pj;
+                Puntuacions[i][1]=pj;
                 System.out.println("Posar els partits guanyats");
                 pg=teclat.nextInt();
-                Puntuacions[y+1]=pg;
+                Puntuacions[i][2]=pg;
                 System.out.println("Posar els partits empatas");
                 pe=teclat.nextInt();
-                Puntuacions[y+2]=pe;
+                Puntuacions[i][3]=pe;
                 System.out.println("Posar els partits perduts");
                 pp=teclat.nextInt();
-                Puntuacions[y+3]=pp;
+                Puntuacions[i][4]=pp;
                 pt=pg*3+pe*1;
-                Puntuacions[y+4]=pt;
-                fw.write(Equips[i]+":"+Puntuacions[y]+":"+Puntuacions[y+1]+":"+Puntuacions[y+2]+":"+Puntuacions[y+3]+":"+Puntuacions[y+4]+"\n");
-                contadorEquips=contadorEquips+6;
+                Puntuacions[i][5]=pt;
+                fw.write(Equips[i]+":"+Puntuacions[i][1]+":"+Puntuacions[i][2]+":"+Puntuacions[i][3]+":"+Puntuacions[i][4]+":"+Puntuacions[i][5]+"\n");
                 fw.close();
                 break;
            }           
@@ -204,45 +199,45 @@ public class Lliga_Esportiva {
                 case '1':  
                     if(Equips[y].equals(Nom)){
                     System.out.println("Puntuació total");
-                    Puntuacions[y+1]= teclat.nextInt();
-                    System.out.println("L'equip: "+ Equips[y] + "  Té una nova punutació de: "+ Puntuacions[y+4]);
+                    Puntuacions[i][5]= teclat.nextInt();
+                    System.out.println("L'equip: "+ Equips[y] + "  Té una nova punutació de: "+ Puntuacions[i][5]);
                     break;}
                 case '2':  
                     if(Equips[y].equals(Nom)){
                     System.out.println("Nou Nom");
                     Equips[y]= teclat.nextLine();
-                    System.out.println("El nou nom d'equip és   "+ Equips[y] + "     Punts Totals  "+ Puntuacions[y+4]);
+                    System.out.println("El nou nom d'equip és   "+ Equips[y] + "     Punts Totals  "+ Puntuacions[i][5]);
                     break;}
                 case '3':  
                     if(Equips[y].equals(Nom)){
                     System.out.println("Nous Partits Jugats");
-                    Puntuacions[y]= teclat.nextInt();
-                    Puntuacions[y+4]=(Puntuacions[y+1]*3+Puntuacions[y+2]*1);
-                    System.out.println("L'Equip: "+ Equips[y] + " Té "+ Puntuacions[y] + " Partits Jugats ");
+                    Puntuacions[i][1]= teclat.nextInt();
+                    Puntuacions[i][5]=(Puntuacions[i][2]*3+Puntuacions[i][3]*1);
+                    System.out.println("L'Equip: "+ Equips[y] + " Té "+ Puntuacions[i][1] + " Partits Jugats ");
                     break;}
                 case '4':  
                     if(Equips[y].equals(Nom)){
                     System.out.println("Nous Partits Guanyats");
-                    Puntuacions[y+1]= teclat.nextInt();
-                    Puntuacions[y+4]=(Puntuacions[y+1]*3+Puntuacions[y+2]*1);
-                    Puntuacions[y]=(Puntuacions[y+1]+Puntuacions[y+2]+Puntuacions[y+3]);
-                    System.out.println("L'Equip: "+ Equips[y] + " Té "+ Puntuacions[y+1] + " Partits Guanyats, i una puntuació nova de " + Puntuacions[y+4] + " i amb un total de " + Puntuacions[y] + " Partits jugats"  );
+                    Puntuacions[i][2]= teclat.nextInt();
+                    Puntuacions[i][5]=(Puntuacions[i][2]*3+Puntuacions[i][3]*1);
+                    Puntuacions[i][1]=(Puntuacions[i][2]+Puntuacions[i][3]+Puntuacions[i][4]);
+                    System.out.println("L'Equip: "+ Equips[y] + " Té "+ Puntuacions[i][2] + " Partits Guanyats, i una puntuació nova de " + Puntuacions[i][5] + " i amb un total de " + Puntuacions[i][1] + " Partits jugats"  );
                     break;}
                 case '5':  
                     if(Equips[y].equals(Nom)){
                     System.out.println("Nous Partits Empatats");
-                    Puntuacions[y+2]= teclat.nextInt();
-                    Puntuacions[y+4]=(Puntuacions[y+1]*3+Puntuacions[y+2]*1);
-                    Puntuacions[y]=(Puntuacions[y+1]+Puntuacions[y+2]+Puntuacions[y+3]);
-                    System.out.println("L'Equip: "+ Equips[y] + " Té "+ Puntuacions[y+2] + " Partits Empatats, i una puntuació nova de " + Puntuacions[y+4] + " i amb un total de " + Puntuacions[y] + " Partits jugats"    );
+                    Puntuacions[i][3]= teclat.nextInt();
+                    Puntuacions[i][5]=(Puntuacions[i][2]*3+Puntuacions[i][3]*1);
+                    Puntuacions[i][1]=(Puntuacions[i][2]+Puntuacions[i][3]+Puntuacions[i][4]);
+                    System.out.println("L'Equip: "+ Equips[y] + " Té "+ Puntuacions[i][3] + " Partits Empatats, i una puntuació nova de " + Puntuacions[i][5] + " i amb un total de " + Puntuacions[i][1] + " Partits jugats"    );
                     break;}
                 case '6':  
                     if(Equips[y].equals(Nom)){
                     System.out.println("Nous Partits Perduts");
-                    Puntuacions[y+3]= teclat.nextInt();
-                    Puntuacions[y+4]=(Puntuacions[y+1]*3+Puntuacions[y+2]*1);
-                    Puntuacions[y]=(Puntuacions[y+1]+Puntuacions[y+2]+Puntuacions[y+3]);
-                    System.out.println("L'Equip: "+ Equips[y] + " Té "+ Puntuacions[y+3] + " Partits Perduts, i una puntuació nova de " + Puntuacions[y+4] + " i amb un total de " + Puntuacions[y] + " Partits jugats"    );
+                    Puntuacions[i][4]= teclat.nextInt();
+                    Puntuacions[i][5]=(Puntuacions[i][2]*3+Puntuacions[i][3]*1);
+                    Puntuacions[i][1]=(Puntuacions[i][2]+Puntuacions[i][3]+Puntuacions[i][4]);
+                    System.out.println("L'Equip: "+ Equips[y] + " Té "+ Puntuacions[i][4] + " Partits Perduts, i una puntuació nova de " + Puntuacions[i][5]+ " i amb un total de " + Puntuacions[i][1] + " Partits jugats"    );
                     break;}
                 case 's':
                     y=y+6;
@@ -261,27 +256,26 @@ public class Lliga_Esportiva {
      static void consultarComandes() throws IOException{
         int a=0;
         int y=0;
-        int min=Puntuacions[0];
-        int max=Puntuacions[0];  
-
-         for(int i=0;i<Equips.length;i++){
+        int min=Puntuacions[a][5];
+        int max=Puntuacions[y][0];
+        for(int i=0;i<Equips.length;i++){
+            
             if(Equips[i]!=null){
-                if(Puntuacions[i+4]<min){
-                min=Puntuacions[i+4];
+                if(Puntuacions[i][5]<min){
+                min=Puntuacions[i][5];
                 a=i;
                 }
             }
-        }System.out.println("L'equip " + Equips[a] + " és el equip cuer amb un total de " +  Puntuacions[a] + " Partits jugats/ "+ Puntuacions[a+1]+ " Partits guanyats/ "+Puntuacions[a+2]+ " Partits empatats/ "+Puntuacions[a+3]+ " Partits perduts/ I amb la puntuació més baixa: "+min);
+        }System.out.println("L'equip " + Equips[a] + " és el equip cuer amb un total de " +  Puntuacions[a][1] + " Partits jugats/ "+ Puntuacions[a][2]+ " Partits guanyats/ "+Puntuacions[a][3]+ " Partits empatats/ "+Puntuacions[a][4]+ " Partits perduts/ I amb la puntuació més baixa: "+min);
         
         for(int i=0;i<Equips.length;i++){
             if(Equips[i]!=null){
-                if(Puntuacions[i+4]>max){
-                
-                max=Puntuacions[i+4];
+                if(Puntuacions[i][5]>max){
+                max=Puntuacions[i][5];
                 y=i;
                 }
             }
-        }System.out.println("L'equip " + Equips[y] + " és el equip líder amb un total de " +  Puntuacions[y] + " Partits jugats/ "+ Puntuacions[y+1]+ " Partits guanyats/ "+Puntuacions[y+2]+ " Partits empatats/ "+Puntuacions[y+3]+ " Partits perduts/ I amb la puntuació més alta: "+max);
+        }System.out.println("L'equip " + Equips[y] + " és el equip líder amb un total de " + Puntuacions[a][1] + " Partits jugats/ "+ Puntuacions[a][2]+ " Partits guanyats/ "+Puntuacions[a][3]+ " Partits empatats/ "+Puntuacions[a][4]+ " Partits perduts/ I amb la puntuació més alta: "+max);
     }
     
      static void guardarDades() throws IOException{
@@ -297,15 +291,14 @@ public class Lliga_Esportiva {
          System.out.println("--------     ---------------------     --------------------    --------------------            -------------------       ----------------    ");
         for (int i=0;i<Equips.length;i++){
             if(Equips[i]!=null){
-            Puntuacions[i+4]=(Puntuacions[i+1]*3+Puntuacions[i+2]*1);
-            Puntuacions[i]=(Puntuacions[i+1]+Puntuacions[i+2]+Puntuacions[i+3]);
-            System.out.println(Equips[i]+"\t\t\t"+Puntuacions[i]+"\t\t\t"+Puntuacions[i+1]+"\t\t\t"+Puntuacions[i+2]+"\t\t\t\t"+Puntuacions[i+3]+"\t\t\t"+Puntuacions[i+4]);
-            pw.println(Equips[i]+":"+Puntuacions[i]+":"+Puntuacions[i+1]+":"+Puntuacions[i+2]+":"+Puntuacions[i+3]+":"+Puntuacions[i+4]);
+            Puntuacions[i][5]=(Puntuacions[i][2]*3+Puntuacions[i][3]*1);
+                    Puntuacions[i][1]=(Puntuacions[i][2]+Puntuacions[i][3]+Puntuacions[i][4]);
+            System.out.println(Equips[i]+"\t\t\t"+Puntuacions[i][1]+"\t\t\t"+Puntuacions[i][2]+"\t\t\t"+Puntuacions[i][3]+"\t\t\t\t"+Puntuacions[i][4]+"\t\t\t"+Puntuacions[i][5]);
+            pw.println(Equips[i]+":"+Puntuacions[i][1]+":"+Puntuacions[i][2]+":"+Puntuacions[i][3]+":"+Puntuacions[i][4]+":"+Puntuacions[i][5]);
            }
 
         }pw.close();
         exit=true;
      }
-
 }
 
